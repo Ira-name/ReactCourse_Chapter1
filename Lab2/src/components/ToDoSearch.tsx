@@ -1,0 +1,18 @@
+
+interface SearchProps {
+  searchValue: string;
+  onSearchChange: (value: string) => void;
+}
+
+const Search = ({ searchValue, onSearchChange }: SearchProps) => {
+  return (
+    <input
+      type="text"
+      value={searchValue}
+      onChange={(e) => onSearchChange(e.target.value)}
+      name="search"
+    />
+  );
+};
+
+export default Search;
