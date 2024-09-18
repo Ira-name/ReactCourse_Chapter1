@@ -4,7 +4,7 @@ interface SearchProps {
   onSearchChange: (value: string) => void;
 }
 
-const Search = ({ searchValue, onSearchChange }: SearchProps) => {
+const ToDoSearch = ({ searchValue, onSearchChange }: SearchProps) => {
   return (
     <input
       type="text"
@@ -15,4 +15,4 @@ const Search = ({ searchValue, onSearchChange }: SearchProps) => {
   );
 };
 
-export default Search;
+export default ToDoSearch;
