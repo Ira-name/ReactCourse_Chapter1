@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-
 interface ToDoFormProps {
   onAdd: (title: string) => void;
+  title: string;
+  onTitleChange: (value: string) => void;
 }
 
-const ToDoForm = ({ onAdd }: ToDoFormProps) => {
-  const [title, setTitle] = useState('');
-
+const ToDoForm = ({ onAdd, title, onTitleChange }: ToDoFormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim()) {
       onAdd(title);
-      setTitle('');
     }
   };
 
@@ -20,7 +17,7 @@ const ToDoForm = ({ onAdd }: ToDoFormProps) => {
       <input
         type="text"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => onTitleChange(e.target.value)}
         name="Title"
       />
       <button

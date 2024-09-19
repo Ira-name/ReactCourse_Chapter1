@@ -9,6 +9,7 @@ interface ToDo {
 const ToDoContainer = () => {
   const [toDo, setToDo] = useState<Array<ToDo>>([]);
   const [searchValue, setSearchValue] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleAddToDo = (title: string) => {
     const newToDo = {
@@ -16,6 +17,7 @@ const ToDoContainer = () => {
       title: title,
     };
     setToDo([...toDo, newToDo]);
+    setTitle('');
   };
 
   const handleDeleteToDo = (id: number) => {
@@ -25,7 +27,7 @@ const ToDoContainer = () => {
   const filteredToDo = toDo.filter((item) => item.title.includes(searchValue));
   return (
     <div>
-      <ToDoForm onAdd={handleAddToDo} />
+      <ToDoForm onAdd={handleAddToDo} title={title} onTitleChange={setTitle} />
       <ToDoSearch searchValue={searchValue} onSearchChange={setSearchValue} />
       <ToDoList items={filteredToDo} onDelete={handleDeleteToDo} />
     </div>
