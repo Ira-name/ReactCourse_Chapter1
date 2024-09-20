@@ -11,15 +11,16 @@ const ToDoContainer = () => {
   const [searchValue, setSearchValue] = useState('');
   const [title, setTitle] = useState('');
 
-  const handleAddToDo = (title: string) => {
-    const newToDo = {
-      id: Date.now(),
-      title: title,
-    };
-    setToDo([...toDo, newToDo]);
-    setTitle('');
+  const handleAddToDo = () => {
+    if (title.trim()) {
+      const newToDo = {
+        id: Date.now(),
+        title: title,
+      };
+      setToDo([...toDo, newToDo]);
+      setTitle('');
+    }
   };
-
   const handleDeleteToDo = (id: number) => {
     setToDo(toDo.filter((item) => item.id !== id));
   };

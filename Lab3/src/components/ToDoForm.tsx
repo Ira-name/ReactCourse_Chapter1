@@ -1,5 +1,5 @@
 interface ToDoFormProps {
-  onAdd: (title: string) => void;
+  onAdd: () => void;
   title: string;
   onTitleChange: (value: string) => void;
 }
@@ -7,9 +7,7 @@ interface ToDoFormProps {
 const ToDoForm = ({ onAdd, title, onTitleChange }: ToDoFormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (title.trim()) {
-      onAdd(title);
-    }
+    onAdd();
   };
 
   return (
