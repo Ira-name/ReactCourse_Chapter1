@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import ToDoForm from './ToDoForm';
 import ToDoList from './ToDoList';
 import ToDoSearch from './ToDoSearch';
@@ -8,7 +8,7 @@ interface ToDo {
   title: string;
 }
 const ToDoContainer = () => {
-  //const [toDo, setToDo] = useState<Array<ToDo>>([]);
+  const [toDo, setToDo] = useState<Array<ToDo>>([]);
   const [searchValue, setSearchValue] = useState('');
   const [title, setTitle] = useState('');
   const { isLoading, data, error } = useGetAllToDo();
@@ -19,18 +19,19 @@ const ToDoContainer = () => {
         id: Date.now(),
         title: title,
       };
-      const updatedData =([...data, newToDo]);
+      setToDo([...toDo, newToDo]);
       setTitle('');
     }
   };
   const handleDeleteToDo = (id: number) => {
-    const updatedData =data.filter((item) => item.id !== id);
+    setToDo(toDo.filter((item) => item.id !== id));
   };
 
   const filteredToDo = data.filter((item) => item.title.includes(searchValue));
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   if (error) {
     return <div>Error fetching data: {error.message}</div>;
   }
