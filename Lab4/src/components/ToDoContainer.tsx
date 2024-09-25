@@ -3,15 +3,15 @@ import ToDoForm from './ToDoForm';
 import ToDoList from './ToDoList';
 import ToDoSearch from './ToDoSearch';
 import useGetAllToDo from './UseGetAllToDo';
-interface ToDo {
+/*interface ToDo {
   id: number;
   title: string;
-}
+}*/
 const ToDoContainer = () => {
-  const [toDo, setToDo] = useState<Array<ToDo>>([]);
+  //const [toDo, setToDo] = useState<Array<ToDo>>([]);
   const [searchValue, setSearchValue] = useState('');
   const [title, setTitle] = useState('');
-  const { isLoading, data, error } = useGetAllToDo();
+  const { isLoading, data, error, setData: setToDo } = useGetAllToDo();
 
   const handleAddToDo = () => {
     if (title.trim()) {
@@ -19,12 +19,12 @@ const ToDoContainer = () => {
         id: Date.now(),
         title: title,
       };
-      setToDo([...toDo, newToDo]);
+      setToDo([...data, newToDo]);
       setTitle('');
     }
   };
   const handleDeleteToDo = (id: number) => {
-    setToDo(toDo.filter((item) => item.id !== id));
+    setToDo(data.filter((item) => item.id !== id));
   };
 
   const filteredToDo = data.filter((item) => item.title.includes(searchValue));
