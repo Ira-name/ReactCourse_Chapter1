@@ -3,15 +3,11 @@ import ToDoForm from './ToDoForm';
 import ToDoList from './ToDoList';
 import ToDoSearch from './ToDoSearch';
 import useGetAllToDo from './UseGetAllToDo';
-/*interface ToDo {
-  id: number;
-  title: string;
-}*/
+
 const ToDoContainer = () => {
-  //const [toDo, setToDo] = useState<Array<ToDo>>([]);
   const [searchValue, setSearchValue] = useState('');
   const [title, setTitle] = useState('');
-  const { isLoading, data, error, setData: setToDo } = useGetAllToDo();
+  const { isLoading, data, setData: setToDo } = useGetAllToDo();
 
   const handleAddToDo = () => {
     if (title.trim()) {
@@ -32,9 +28,6 @@ const ToDoContainer = () => {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error fetching data: {error.message}</div>;
-  }
   return (
     <div>
       <ToDoForm onAdd={handleAddToDo} title={title} onTitleChange={setTitle} />

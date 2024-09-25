@@ -8,7 +8,6 @@ interface ToDo {
 const useGetAllToDo = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<Array<ToDo>>([]);
-  const [error, setError] = useState<Error>();
 
   useEffect(() => {
     const fetchData = () => {
@@ -19,8 +18,7 @@ const useGetAllToDo = () => {
           setData(data);
           setIsLoading(false);
         })
-        .catch((error: Error) => {
-          setError(error);
+        .catch(() => {
           setIsLoading(false);
         });
     };
@@ -28,7 +26,7 @@ const useGetAllToDo = () => {
     fetchData();
   }, []);
 
-  return { isLoading, data, error, setData };
+  return { isLoading, data, setData };
 };
 
 export default useGetAllToDo;
