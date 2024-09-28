@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ToDoForm from './ToDoForm';
 import ToDoList from './ToDoList';
 import ToDoSearch from './ToDoSearch';
-import useGetAllToDo from './UseGetAllToDo';
+import useGetAllToDo from '../hooks/useGetAllToDo';
 
 const ToDoContainer = () => {
   const [searchValue, setSearchValue] = useState('');
