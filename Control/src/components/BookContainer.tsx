@@ -60,7 +60,7 @@ const BookContainer = () => {
               ...item,
               firstName: firstName,
               lastName: lastName,
-              phone: lastName,
+              phone: phone,
             }
           : item
       )
