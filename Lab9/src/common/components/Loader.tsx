@@ -1,5 +1,5 @@
 import React from 'react';
-import './Spiner.css';
+import '../../common/components/style/Spiner.css';
 
 const LoaderSpiner = () => {
   return <div className="loader"></div>;
